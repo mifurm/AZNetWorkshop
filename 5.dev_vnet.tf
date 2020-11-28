@@ -43,28 +43,28 @@ resource "azurerm_subnet" "subnet-dedicated" {
 }
 
 
-// resource "azurerm_subnet_network_security_group_association" "subnet-frontend-nsg-association" {
-//   count                     = var.number-of-net
-//   subnet_id                 = azurerm_subnet.subnet-frontend[count.index].id
-//   network_security_group_id = azurerm_network_security_group.NSG-FRONTEND[count.index].id
-// }
+resource "azurerm_subnet_network_security_group_association" "subnet-frontend-nsg-association" {
+  count                     = var.number-of-net
+  subnet_id                 = azurerm_subnet.subnet-frontend[count.index].id
+  network_security_group_id = azurerm_network_security_group.NSG-FRONTEND[count.index].id
+}
 
 
-// resource "azurerm_subnet_network_security_group_association" "subnet-backend-nsg-association" {
-//   count                     = var.number-of-net
-//   subnet_id                 = azurerm_subnet.subnet-backend[count.index].id
-//   network_security_group_id = azurerm_network_security_group.NSG-BACKEND[count.index].id
-// }
+resource "azurerm_subnet_network_security_group_association" "subnet-backend-nsg-association" {
+  count                     = var.number-of-net
+  subnet_id                 = azurerm_subnet.subnet-backend[count.index].id
+  network_security_group_id = azurerm_network_security_group.NSG-BACKEND[count.index].id
+}
 
-// resource "azurerm_subnet_network_security_group_association" "subnet-data-nsg-association" {
-//   count                     = var.number-of-net
-//   subnet_id                 = azurerm_subnet.subnet-data[count.index].id
-//   network_security_group_id = azurerm_network_security_group.NSG-DATA[count.index].id
-// }
+resource "azurerm_subnet_network_security_group_association" "subnet-data-nsg-association" {
+  count                     = var.number-of-net
+  subnet_id                 = azurerm_subnet.subnet-data[count.index].id
+  network_security_group_id = azurerm_network_security_group.NSG-DATA[count.index].id
+}
 
-// resource "azurerm_subnet_network_security_group_association" "subnet-dedicated-nsg-association" {
-//   count                     = var.number-of-net
-//   subnet_id                 = azurerm_subnet.subnet-dedicated[count.index].id
-//   network_security_group_id = azurerm_network_security_group.NSG-DEDICATED[count.index].id
-// }
+resource "azurerm_subnet_network_security_group_association" "subnet-dedicated-nsg-association" {
+  count                     = var.number-of-net
+  subnet_id                 = azurerm_subnet.subnet-dedicated[count.index].id
+  network_security_group_id = azurerm_network_security_group.NSG-DEDICATED[count.index].id
+}
 

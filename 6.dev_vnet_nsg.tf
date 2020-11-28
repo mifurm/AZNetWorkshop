@@ -6,10 +6,10 @@ resource "azurerm_network_security_group" "NSG-FRONTEND" {
 
 
   security_rule {
-    name                       = "BlockAll_Inbound"
+    name                       = "AllowAll_Inbound"
     priority                   = 4095
     direction                  = "Inbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -18,10 +18,10 @@ resource "azurerm_network_security_group" "NSG-FRONTEND" {
   }
 
   security_rule {
-    name                       = "BlockAll_Outbound"
+    name                       = "AllowAll_Outbound"
     priority                   = 4095
     direction                  = "Outbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -43,10 +43,10 @@ resource "azurerm_network_security_group" "NSG-BACKEND" {
 
 
   security_rule {
-    name                       = "BlockAll_Inbound"
+    name                       = "AllowAll_Inbound"
     priority                   = 4095
     direction                  = "Inbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -55,10 +55,10 @@ resource "azurerm_network_security_group" "NSG-BACKEND" {
   }
 
   security_rule {
-    name                       = "BlockAll_Outbound"
+    name                       = "AllowAll_Outbound"
     priority                   = 4095
     direction                  = "Outbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -80,10 +80,10 @@ resource "azurerm_network_security_group" "NSG-DATA" {
 
 
   security_rule {
-    name                       = "BlockAll_Inbound"
+    name                       = "AllowAll_Inbound"
     priority                   = 4095
     direction                  = "Inbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -92,10 +92,10 @@ resource "azurerm_network_security_group" "NSG-DATA" {
   }
 
   security_rule {
-    name                       = "BlockAll_Outbound"
+    name                       = "AllowAll_Outbound"
     priority                   = 4095
     direction                  = "Outbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -117,10 +117,10 @@ resource "azurerm_network_security_group" "NSG-DEDICATED" {
 
 
   security_rule {
-    name                       = "BlockAll_Inbound"
+    name                       = "AllowAll_Inbound"
     priority                   = 4095
     direction                  = "Inbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -129,10 +129,10 @@ resource "azurerm_network_security_group" "NSG-DEDICATED" {
   }
 
   security_rule {
-    name                       = "BlockAll_Outbound"
+    name                       = "AllowAll_Outbound"
     priority                   = 4095
     direction                  = "Outbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
