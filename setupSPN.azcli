@@ -1,0 +1,26 @@
+az account show
+
+# {
+#   "environmentName": "AzureCloud",
+#   "id": "<SUB ID>",
+#   "isDefault": true,
+#   "name": "mifurmlab",
+#   "state": "Enabled",
+#   "tenantId": "<TENANT ID>",
+#   "user": {
+#     "name": "michal.furmankiewicz@hotmail.com",
+#     "type": "user"
+#   }
+# }
+
+az ad sp create-for-rbac -n "NetworkLab01"
+
+# {
+#   "appId": "<APP ID>",
+#   "displayName": "NetworkLab01",
+#   "name": "http://NetworkLab01",
+#   "password": "<SECRET>",
+#   "tenant": "<TENANT ID>"
+# }
+
+az role assignment create --assignee "<APP ID>" --role "Contributor" --scope "/subscriptions/<SUB ID>"
