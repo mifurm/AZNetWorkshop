@@ -1,12 +1,12 @@
-data "azurerm_virtual_network" "vnet-hub" {
-  name = "vnet-hub"
+data "azurerm_virtual_network" "vnet-spoke" {
+  name = "vnet-spoke"
   resource_group_name = var.resourcegroupname
 }
  
 data "azurerm_subnet" "vnet-spoke-1"{
   name = "vnet-spoke-1"
   resource_group_name = var.resourcegroupname
-  virtual_network_name = data.azurerm_virtual_network.vnet-hub
+  virtual_network_name = data.azurerm_virtual_network.vnet-spoke.name
 }
  
 resource "azurerm_network_interface" "vm-wfe01-dev-nic-01" {
