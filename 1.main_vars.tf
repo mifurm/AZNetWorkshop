@@ -43,5 +43,25 @@ variable "vnet-global-azurefirewall-subnet" {
  default=["10.50.0.0/28"]
 }
 
+variable "resource_group_name" {
+   default="karol-test"
+}
+
+variable "resourcegroupname" {
+  
+}
+
+variable "db_name" {
+  default="karol"
+}
+
+variable "db_pass" {
+  default="H@Sh1CoR3!"
+}
+
+resource "azurerm_resource_group" "rg" {
+  name     = var.resource_group_name
+  location = var.location
+}
 
 
