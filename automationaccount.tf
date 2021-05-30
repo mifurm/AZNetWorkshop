@@ -1,3 +1,9 @@
+#
+#openssl req -x509 -sha256 -nodes -days 730 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt
+#openssl x509 -in certificate.crt -out certificate.pem
+#openssl pkcs12 -export -keypbe NONE -certpbe NONE -inkey privateKey.key -in certificate.crt -out certificate.pfx
+#
+
 provider "azurerm" {
   features {}
 }
