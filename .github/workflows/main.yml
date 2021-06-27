@@ -48,10 +48,7 @@ jobs:
           terraform_version: # optional, default is latest
           # Whether or not to install a wrapper to wrap subsequent calls of the `terraform` binary and expose its STDOUT, STDERR, and exit code as outputs named `stdout`, `stderr`, and `exitcode` respectively. Defaults to `true`.
           terraform_wrapper: # optional, default is true
-          
+     
       - name: HashiCorp - Setup Terraform
-        # You may pin to the exact commit or the version.
-        # uses: hashicorp/setup-terraform@d22444889af304a44b997011fbabb81ff705a7b4
-        uses: hashicorp/setup-terraform@v1.2.1
         run: terraform init     
     
