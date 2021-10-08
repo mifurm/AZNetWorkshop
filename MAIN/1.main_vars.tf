@@ -47,10 +47,6 @@ variable "resource_group_name" {
    default="karol-test"
 }
 
-variable "resourcegroupname" {
-  
-}
-
 variable "db_name" {
   default="karol"
 }
@@ -58,10 +54,3 @@ variable "db_name" {
 variable "db_pass" {
   default="H@Sh1CoR3!"
 }
-
-resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
-  location = var.location
-}
-
-
