@@ -122,7 +122,7 @@ resource "azurerm_virtual_machine_extension" "enable-apache-01" {
   settings = <<SETTINGS
     {
         "fileUris": [
-        "https://raw.githubusercontent.com/mifurm/AZNetWorkshop/main/install-apache-vm01.sh"
+        "https://raw.githubusercontent.com/mifurm/AZNetWorkshop/main/DEV/install-apache-vm01.sh"
         ],
         "commandToExecute": "bash install-apache-vm01.sh"
     }
@@ -139,7 +139,7 @@ resource "azurerm_virtual_machine_extension" "enable-apache-02" {
   settings = <<SETTINGS
     {
         "fileUris": [
-        "https://raw.githubusercontent.com/mifurm/AZNetWorkshop/main/install-apache-vm02.sh"
+        "https://raw.githubusercontent.com/mifurm/AZNetWorkshop/main/DEV/install-apache-vm02.sh"
         ],
         "commandToExecute": "bash install-apache-vm02.sh"
     }
