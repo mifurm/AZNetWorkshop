@@ -23,6 +23,10 @@ variable "default-vm-size" {
   default = "Standard_D2ds_v5"
 }
 
+variable "default-small-vm-size" {
+  default = "Standard_D2as_v4"
+}
+
 #Default User
 variable "default-admin-username" {
   default = "defadminuser"

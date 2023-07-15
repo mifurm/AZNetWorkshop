@@ -33,6 +33,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-PLFW" {
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
 
+  license_type = "Windows_Server"
+
   network_interface_ids = [
     azurerm_network_interface.CLOUD-PLFW-NIC.id,
   ]
@@ -84,6 +86,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-PLDC" {
   size                   = var.default-vm-size
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
+
+  license_type = "Windows_Server"
 
   network_interface_ids = [
     azurerm_network_interface.CLOUD-PLDC-NIC.id,
@@ -137,6 +141,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-PLSRV" {
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
 
+  license_type = "Windows_Server"
+
   network_interface_ids = [
     azurerm_network_interface.CLOUD-PLSRV-NIC.id,
   ]
@@ -188,6 +194,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-PLCLIENT" {
   size                   = var.default-vm-size
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
+
+  license_type = "Windows_Server"
 
   network_interface_ids = [
     azurerm_network_interface.CLOUD-PLCLIENT-NIC.id,

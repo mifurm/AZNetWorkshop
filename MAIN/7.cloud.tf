@@ -33,6 +33,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-FW" {
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
 
+  license_type = "Windows_Server"
+
   network_interface_ids = [
     azurerm_network_interface.CLOUD-FW-NIC.id,
   ]
@@ -81,9 +83,11 @@ resource "azurerm_windows_virtual_machine" "CLOUD-DC" {
   name                   = "CLOUD-DC"
   location               = azurerm_resource_group.ws-rg02.location
   resource_group_name    = azurerm_resource_group.ws-rg02.name
-  size                   = var.default-vm-size
+  size                   = var.default-small-vm-size
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
+
+  license_type = "Windows_Server"
 
   network_interface_ids = [
     azurerm_network_interface.CLOUD-DC-NIC.id,
@@ -134,9 +138,11 @@ resource "azurerm_windows_virtual_machine" "CLOUD-ROOTCA" {
   name                   = "CLOUD-ROOTCA"
   location               = azurerm_resource_group.ws-rg02.location
   resource_group_name    = azurerm_resource_group.ws-rg02.name
-  size                   = var.default-vm-size
+  size                   = var.default-small-vm-size
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
+
+  license_type = "Windows_Server"
 
   network_interface_ids = [
     azurerm_network_interface.CLOUD-ROOTCA-NIC.id,

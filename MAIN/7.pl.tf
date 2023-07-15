@@ -33,6 +33,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-DKFW" {
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
 
+  license_type = "Windows_Server"
+
   network_interface_ids = [
     azurerm_network_interface.CLOUD-DKFW-NIC.id,
   ]
@@ -84,6 +86,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-DKDC" {
   size                   = var.default-vm-size
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
+
+  license_type = "Windows_Server"
 
   network_interface_ids = [
     azurerm_network_interface.CLOUD-DKDC-NIC.id,
@@ -137,6 +141,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-DKSRV1" {
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
 
+  license_type = "Windows_Server"
+
   network_interface_ids = [
     azurerm_network_interface.CLOUD-DKSRV1-NIC.id,
   ]
@@ -189,6 +195,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-DKSRV2" {
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
 
+  license_type = "Windows_Server"
+
   network_interface_ids = [
     azurerm_network_interface.CLOUD-DKSRV2-NIC.id,
   ]
@@ -240,6 +248,8 @@ resource "azurerm_windows_virtual_machine" "CLOUD-DKCLIENT" {
   size                   = var.default-vm-size
   admin_username         = var.default-admin-username
   admin_password         = var.default-admin-pass
+
+  license_type = "Windows_Server"
 
   network_interface_ids = [
     azurerm_network_interface.CLOUD-DKCLIENT-NIC.id,
