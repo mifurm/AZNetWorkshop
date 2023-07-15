@@ -4,19 +4,31 @@
 provider "azurerm" {
   alias = "sub-06"
   subscription_id = var.sub-06
-  features {}
+  features {
+     resource_group {
+       prevent_deletion_if_contains_resources = false
+     }
+  }
 }
 
 provider "azurerm" {
   alias = "sub-10"
   subscription_id = var.sub-10
-  features {}
+  features {
+     resource_group {
+       prevent_deletion_if_contains_resources = false
+     }
+  }
 }
 
 provider "azurerm" {
   alias = "sub-03"
   subscription_id = var.sub-03
-  features {}
+  features {
+     resource_group {
+      prevent_deletion_if_contains_resources = false
+     }
+  }
 }
 
 #TODO
