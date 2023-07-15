@@ -1,0 +1,23 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "=3.0.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "dev"
+  subscription_id = var.dev_sub_id
+  features {}
+}
+
+provider "azurerm" {
+  alias = "prod"
+  subscription_id = var.prod_sub_id
+  features {}
+}
+
+git config --global user.name "Michal Furmankiewicz"
+git config --global user.email michal.furmankiewicz@hotmail.com

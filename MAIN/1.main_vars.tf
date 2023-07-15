@@ -1,11 +1,22 @@
-#Location of all lab stuff
-variable "location" {
-  default="westeurope"
+variable "sub-10" {
+  default = "c6484eee-b936-412a-94d6-8dc1b4386bc2"
 }
 
-#Number of networks to create
-variable "number-of-net" {
-  default = "4"
+variable "sub-06" {
+  default = "82fec995-d706-4757-a002-6bfc2d89631a"
+}
+
+variable "sub-03" {
+  default = "4dc4b888-e3bc-4c76-951b-4ece151e3f19"
+}
+
+#Location of all lab stuff
+variable "location-swc" {
+  default="Sweden Central"
+}
+
+variable "location-plc" {
+  default="Poland Central"
 }
 
 #Default User
@@ -41,16 +52,4 @@ variable "vnet-hub-gatewaysubnet" {
 #VNET GLOBAL FIREWALL SUBNET ADDRESS
 variable "vnet-global-azurefirewall-subnet" {
  default=["10.50.0.0/28"]
-}
-
-variable "resource_group_name" {
-   default="karol-test"
-}
-
-variable "db_name" {
-  default="karol"
-}
-
-variable "db_pass" {
-  default="H@Sh1CoR3!"
 }

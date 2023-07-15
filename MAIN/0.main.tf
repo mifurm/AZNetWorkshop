@@ -2,9 +2,23 @@
 ### TODO: Setup Your provider
 ###
 provider "azurerm" {
-  subscription_id = "7a3ff142-984a-4537-ad5a-cd0ace174e69"
+  alias = "sub-06"
+  subscription_id = var.sub-06
   features {}
 }
+
+provider "azurerm" {
+  alias = "sub-10"
+  subscription_id = var.sub-10
+  features {}
+}
+
+provider "azurerm" {
+  alias = "sub-03"
+  subscription_id = var.sub-03
+  features {}
+}
+
 
 #TODO
 #terraform {
@@ -15,3 +29,4 @@ provider "azurerm" {
 #    access_key  = 
 #  }
 #}
+
