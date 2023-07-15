@@ -19,6 +19,10 @@ variable "location-plc" {
   default="Poland Central"
 }
 
+variable "default-vm-size" {
+  default = "Standard_DS2_v3"
+}
+
 #Default User
 variable "default-admin-username" {
   default = "defadminuser"
@@ -29,27 +33,15 @@ variable "default-admin-pass" {
   default = "P@ssW0rd!"
 }
 
-#VNET HUB ADDRESS
-variable "vnet-hub" {
- default=["10.10.0.0/16"]
+#VNET INET ADDRESS
+variable "vnet-inet" {
+ default=["198.51.100.0/24"]
 }
 
-#VNET GLOBAL ADDRESS
-variable "vnet-global" {
- default=["10.50.0.0/16"]
+variable "vnet-windows-env" {
+ default=["10.0.0.0/8"]
 }
 
-#VNET DEV ADDRESS
-variable "vnet-dev" {
+variable "vnet-storage" {
  default=["10.100.0.0/16"]
-}
-
-#VNET HUB GATEWAY SUBNET ADDRESS
-variable "vnet-hub-gatewaysubnet" {
- default=["10.10.0.0/28"]
-}
-
-#VNET GLOBAL FIREWALL SUBNET ADDRESS
-variable "vnet-global-azurefirewall-subnet" {
- default=["10.50.0.0/28"]
 }

@@ -19,7 +19,6 @@ provider "azurerm" {
   features {}
 }
 
-
 #TODO
 #terraform {
 #  backend "azurerm" {

@@ -1,5 +1,5 @@
 *.tfstate*
 *.terraform*
 *.txt*
-samples.txt
+*samples.*
 *.gitignore*
