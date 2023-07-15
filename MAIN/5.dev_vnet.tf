@@ -7,7 +7,7 @@ resource "azurerm_virtual_network" "vnet-windows-env" {
 }
 
 resource "azurerm_subnet" "subnet-cloud" {
-  provider = azurerm.sub-10
+  provider             = azurerm.sub-10
   name                 = "subnet-cloud"
   resource_group_name  = azurerm_resource_group.ws-rg02.name
   virtual_network_name = azurerm_virtual_network.vnet-windows-env.name
@@ -15,7 +15,7 @@ resource "azurerm_subnet" "subnet-cloud" {
 }
 
 resource "azurerm_subnet" "subnet-pl" {
-  provider = azurerm.sub-10
+  provider             = azurerm.sub-10
   name                 = "subnet-pl"
   resource_group_name  = azurerm_resource_group.ws-rg02.name
   virtual_network_name = azurerm_virtual_network.vnet-windows-env.name
@@ -23,7 +23,7 @@ resource "azurerm_subnet" "subnet-pl" {
 }
 
 resource "azurerm_subnet" "subnet-dk" {
-  provider = azurerm.sub-10
+  provider             = azurerm.sub-10
   name                 = "subnet-dk"
   resource_group_name  = azurerm_resource_group.ws-rg02.name
   virtual_network_name = azurerm_virtual_network.vnet-windows-env.name

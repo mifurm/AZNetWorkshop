@@ -20,7 +20,7 @@ variable "location-plc" {
 }
 
 variable "default-vm-size" {
-  default = "Standard_DS2_v3"
+  default = "Standard_D2ds_v5"
 }
 
 #Default User

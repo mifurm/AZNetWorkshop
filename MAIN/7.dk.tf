@@ -1,147 +1,207 @@
-
-# resource "azurerm_public_ip" "VM-WFE01-DEV-PIP" {
-#   name                    = "VM-WFE01-DEV-PIP"
-#   location                = azurerm_resource_group.dev-prolab-rg[0].location
-#   resource_group_name     = azurerm_resource_group.dev-prolab-rg[0].name
+###
+# CLOUD-PLFW
+###
+# resource "azurerm_public_ip" "CLOUD-PLFW-PIP" {
+#   provider                = azurerm.sub-10
+#   name                    = "CLOUD-PLFW-PIP"
+#   location                = azurerm_resource_group.ws-rg02.location
+#   resource_group_name     = azurerm_resource_group.ws-rg02.name
 #   allocation_method       = "Dynamic"
 #   idle_timeout_in_minutes = 30
 # }
 
-# resource "azurerm_network_interface" "VM-WFE01-DEV-NIC" {
-#   name                = "VM-WFE01-DEV-NIC"
-#   location            = azurerm_resource_group.dev-prolab-rg[0].location
-#   resource_group_name = azurerm_resource_group.dev-prolab-rg[0].name
+resource "azurerm_network_interface" "CLOUD-PLFW-NIC" {
+  provider                = azurerm.sub-10
+  name                    = "CLOUD-PLFW-NIC"
+  location                = azurerm_resource_group.ws-rg02.location
+  resource_group_name     = azurerm_resource_group.ws-rg02.name
 
-#   ip_configuration {
-#     name                          = "VM-WFE01-DEV-NIC-CONFIG"
-#     subnet_id                     = azurerm_subnet.subnet-frontend[0].id
-#     private_ip_address_allocation = "Dynamic"
-#     public_ip_address_id = azurerm_public_ip.VM-WFE01-DEV-PIP.id
-#   }
+  ip_configuration {
+    name                          = "CLOUD-PLFW-NIC-CONFIG"
+    subnet_id                     = azurerm_subnet.subnet-pl.id
+    private_ip_address_allocation = "Dynamic"
+    #public_ip_address_id = azurerm_public_ip.CLOUD-PLFW-PIP.id
+  }
+}
 
-#   tags                = {      
-#         "Project"     = "DEV"
-#         "Network"     = "DEV"
-#     }
-# }
+resource "azurerm_windows_virtual_machine" "CLOUD-PLFW" {
+  provider               = azurerm.sub-10
+  name                   = "CLOUD-PLFW"
+  location               = azurerm_resource_group.ws-rg02.location
+  resource_group_name    = azurerm_resource_group.ws-rg02.name
+  size                   = var.default-vm-size
+  admin_username         = var.default-admin-username
+  admin_password         = var.default-admin-pass
 
-# resource "azurerm_linux_virtual_machine" "VM-WFE01-DEV" {
-#     name                            = "VM-WFE01-DEV"
-#     computer_name                   = "VM-WFE01-DEV"
-#     location            = azurerm_resource_group.dev-prolab-rg[0].location
-#     resource_group_name = azurerm_resource_group.dev-prolab-rg[0].name
-#     size                            = "Standard_DS1_v2"
-    
-#     disable_password_authentication = false
-#     admin_username                  = var.default-admin-username
-#     admin_password                  = var.default-admin-pass
+  network_interface_ids = [
+    azurerm_network_interface.CLOUD-PLFW-NIC.id,
+  ]
 
-#     network_interface_ids = [
-#         azurerm_network_interface.VM-WFE01-DEV-NIC.id,
-#     ]
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
 
-#     os_disk {
-#         caching              = "ReadWrite"
-#         storage_account_type = "Premium_LRS"
-#         name                 = "VM-WFE01-DEV-OS"
-        
-#     }
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-Datacenter"
+    version   = "latest"
+  }
+}
 
-#     source_image_reference {
-#       publisher = "Canonical"
-#       offer     = "UbuntuServer"
-#       sku       = "18.04-LTS"
-#       version   = "latest"
-#     }
-# }
-
-
-# resource "azurerm_public_ip" "VM-WFE02-DEV-PIP" {
-#   name                    = "VM-WFE02-DEV-PIP"
-#   location                = azurerm_resource_group.dev-prolab-rg[0].location
-#   resource_group_name     = azurerm_resource_group.dev-prolab-rg[0].name
+###
+# CLOUD-PLDC
+###
+# resource "azurerm_public_ip" "CLOUD-PLDC-PIP" {
+#   provider                = azurerm.sub-10
+#   name                    = "CLOUD-PLDC-PIP"
+#   location                = azurerm_resource_group.ws-rg02.location
+#   resource_group_name     = azurerm_resource_group.ws-rg02.name
 #   allocation_method       = "Dynamic"
 #   idle_timeout_in_minutes = 30
 # }
 
-# resource "azurerm_network_interface" "VM-WFE02-DEV-NIC" {
-#   name                = "VM-WFE02-DEV-NIC"
-#   location            = azurerm_resource_group.dev-prolab-rg[0].location
-#   resource_group_name = azurerm_resource_group.dev-prolab-rg[0].name
+resource "azurerm_network_interface" "CLOUD-PLDC-NIC" {
+  provider                = azurerm.sub-10
+  name                    = "CLOUD-PLDC-NIC"
+  location                = azurerm_resource_group.ws-rg02.location
+  resource_group_name     = azurerm_resource_group.ws-rg02.name
 
-#   ip_configuration {
-#     name                          = "VM-WFE02-DEV-NIC-CONFIG"
-#     subnet_id                     = azurerm_subnet.subnet-frontend[0].id
-#     private_ip_address_allocation = "Dynamic"
-#     public_ip_address_id = azurerm_public_ip.VM-WFE02-DEV-PIP.id
-#   }
+  ip_configuration {
+    name                          = "CLOUD-PLDC-NIC-CONFIG"
+    subnet_id                     = azurerm_subnet.subnet-pl.id
+    private_ip_address_allocation = "Dynamic"
+    #public_ip_address_id = azurerm_public_ip.CLOUD-PLDC-PIP.id
+  }
+}
 
-#   tags                = {      
-#         "Project"     = "DEV"
-#         "Network"     = "DEV"
-#     }
+resource "azurerm_windows_virtual_machine" "CLOUD-PLDC" {
+  provider               = azurerm.sub-10
+  name                   = "CLOUD-PLDC"
+  location               = azurerm_resource_group.ws-rg02.location
+  resource_group_name    = azurerm_resource_group.ws-rg02.name
+  size                   = var.default-vm-size
+  admin_username         = var.default-admin-username
+  admin_password         = var.default-admin-pass
+
+  network_interface_ids = [
+    azurerm_network_interface.CLOUD-PLDC-NIC.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-Datacenter"
+    version   = "latest"
+  }
+}
+
+###
+# CLOUD-PLSRV
+###
+# resource "azurerm_public_ip" "CLOUD-PLSRV-PIP" {
+#   provider                = azurerm.sub-10
+#   name                    = "CLOUD-PLSRV-PIP"
+#   location                = azurerm_resource_group.ws-rg02.location
+#   resource_group_name     = azurerm_resource_group.ws-rg02.name
+#   allocation_method       = "Dynamic"
+#   idle_timeout_in_minutes = 30
 # }
 
-# resource "azurerm_linux_virtual_machine" "VM-WFE02-DEV" {
-#     name                            = "VM-WFE02-DEV"
-#     computer_name                   = "VM-WFE02-DEV"
-#     location            = azurerm_resource_group.dev-prolab-rg[0].location
-#     resource_group_name = azurerm_resource_group.dev-prolab-rg[0].name
-#     size                            = "Standard_DS1_v2"
-    
-#     disable_password_authentication = false
-#     admin_username                  = var.default-admin-username
-#     admin_password                  = var.default-admin-pass
+resource "azurerm_network_interface" "CLOUD-PLSRV-NIC" {
+  provider                = azurerm.sub-10
+  name                    = "CLOUD-PLSRV-NIC"
+  location                = azurerm_resource_group.ws-rg02.location
+  resource_group_name     = azurerm_resource_group.ws-rg02.name
 
-#     network_interface_ids = [
-#         azurerm_network_interface.VM-WFE02-DEV-NIC.id,
-#     ]
+  ip_configuration {
+    name                          = "CLOUD-PLSRV-NIC-CONFIG"
+    subnet_id                     = azurerm_subnet.subnet-pl.id
+    private_ip_address_allocation = "Dynamic"
+    #public_ip_address_id = azurerm_public_ip.CLOUD-PLSRV-PIP.id
+  }
+}
 
-#     os_disk {
-#         caching              = "ReadWrite"
-#         storage_account_type = "Premium_LRS"
-#         name                 = "VM-WFE02-DEV-OS"
-        
-#     }
+resource "azurerm_windows_virtual_machine" "CLOUD-PLSRV" {
+  provider               = azurerm.sub-10
+  name                   = "CLOUD-PLSRV"
+  location               = azurerm_resource_group.ws-rg02.location
+  resource_group_name    = azurerm_resource_group.ws-rg02.name
+  size                   = var.default-vm-size
+  admin_username         = var.default-admin-username
+  admin_password         = var.default-admin-pass
 
-#     source_image_reference {
-#       publisher = "Canonical"
-#       offer     = "UbuntuServer"
-#       sku       = "18.04-LTS"
-#       version   = "latest"
-#     }
+  network_interface_ids = [
+    azurerm_network_interface.CLOUD-PLSRV-NIC.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-Datacenter"
+    version   = "latest"
+  }
+}
+
+###
+# CLOUD-PLCLIENT
+###
+# resource "azurerm_public_ip" "CLOUD-PLCLIENT-PIP" {
+#   provider                = azurerm.sub-10
+#   name                    = "CLOUD-PLCLIENT-PIP"
+#   location                = azurerm_resource_group.ws-rg02.location
+#   resource_group_name     = azurerm_resource_group.ws-rg02.name
+#   allocation_method       = "Dynamic"
+#   idle_timeout_in_minutes = 30
 # }
 
-# resource "azurerm_virtual_machine_extension" "enable-apache-01" {
-#   name                 = "enable-apache-01"
-#   virtual_machine_id   = azurerm_linux_virtual_machine.VM-WFE01-DEV.id
-#   publisher            = "Microsoft.Azure.Extensions"
-#   type                 = "CustomScript"
-#   type_handler_version = "2.0"
+resource "azurerm_network_interface" "CLOUD-PLCLIENT-NIC" {
+  provider                = azurerm.sub-10
+  name                    = "CLOUD-PLCLIENT-NIC"
+  location                = azurerm_resource_group.ws-rg02.location
+  resource_group_name     = azurerm_resource_group.ws-rg02.name
 
-#   settings = <<SETTINGS
-#     {
-#         "fileUris": [
-#         "https://raw.githubusercontent.com/mifurm/AZNetWorkshop/main/DEV/install-apache-vm01.sh"
-#         ],
-#         "commandToExecute": "bash install-apache-vm01.sh"
-#     }
-# SETTINGS
-# }
+  ip_configuration {
+    name                          = "CLOUD-PLCLIENT-NIC-CONFIG"
+    subnet_id                     = azurerm_subnet.subnet-pl.id
+    private_ip_address_allocation = "Dynamic"
+    #public_ip_address_id = azurerm_public_ip.CLOUD-PLCLIENT-PIP.id
+  }
+}
 
-# resource "azurerm_virtual_machine_extension" "enable-apache-02" {
-#   name                 = "enable-apache-02"
-#   virtual_machine_id   = azurerm_linux_virtual_machine.VM-WFE02-DEV.id
-#   publisher            = "Microsoft.Azure.Extensions"
-#   type                 = "CustomScript"
-#   type_handler_version = "2.0"
+resource "azurerm_windows_virtual_machine" "CLOUD-PLCLIENT" {
+  provider               = azurerm.sub-10
+  name                   = "CLOUD-PLCLIENT"
+  location               = azurerm_resource_group.ws-rg02.location
+  resource_group_name    = azurerm_resource_group.ws-rg02.name
+  size                   = var.default-vm-size
+  admin_username         = var.default-admin-username
+  admin_password         = var.default-admin-pass
 
-#   settings = <<SETTINGS
-#     {
-#         "fileUris": [
-#         "https://raw.githubusercontent.com/mifurm/AZNetWorkshop/main/DEV/install-apache-vm02.sh"
-#         ],
-#         "commandToExecute": "bash install-apache-vm02.sh"
-#     }
-# SETTINGS
-# }
+  network_interface_ids = [
+    azurerm_network_interface.CLOUD-PLCLIENT-NIC.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-Datacenter"
+    version   = "latest"
+  }
+}
