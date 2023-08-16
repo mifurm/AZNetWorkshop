@@ -16,15 +16,18 @@ variable "location-swc" {
 }
 
 variable "location-plc" {
-  default="Poland Central"
+  default="Sweden Central"
+  #default="Poland Central"
 }
 
 variable "default-vm-size" {
-  default = "Standard_D2ds_v5"
+  default = "Standard_D2s_v3"
+  #default = "Standard_D2ds_v5"
 }
 
 variable "default-small-vm-size" {
-  default = "Standard_D2as_v4"
+  default = "Standard_D2s_v3"
+  #default = "Standard_D2as_v4"
 }
 
 #Default User
