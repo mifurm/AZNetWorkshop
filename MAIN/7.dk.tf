@@ -155,7 +155,7 @@ resource "azurerm_windows_virtual_machine" "CLOUD-PLSRV" {
   source_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = "2022-Datacenter"
+    sku       = "2022-Datacenter-Core"
     version   = "latest"
   }
 }
