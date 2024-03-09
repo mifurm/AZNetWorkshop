@@ -1,6 +1,6 @@
 #Location of all lab stuff
 variable "location" {
-  default="westeurope"
+  default="swedencentral"
 }
 
 #Number of networks to create
